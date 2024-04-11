@@ -7,7 +7,7 @@ data "aws_iam_policy_document" "assume_role" {
       identifiers = ["eks.amazonaws.com"]
     }
 
-    actions = ["sts:AssumeRole"]
+    actions = ["*"]
   }
 }
 
@@ -53,7 +53,7 @@ resource "aws_iam_role" "example1" {
 
   assume_role_policy = jsonencode({
     Statement = [{
-      Action = "sts:AssumeRole"
+      Action = "*"
       Effect = "Allow"
       Principal = {
         Service = "ec2.amazonaws.com"
